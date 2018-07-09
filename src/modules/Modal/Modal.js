@@ -174,8 +174,8 @@ class Modal extends Component {
     this.trySetState({ open: false })
   }
 
-  handleDimmerClick = (e) => {
-    debug('handleDimmerClick()')
+  handleDocumentClick = (e) => {
+    debug('handleDocumentClick()')
     const { closeOnDimmerClick } = this.props
 
     if (!closeOnDimmerClick || doesNodeContainClick(this.ref, e)) return
@@ -377,11 +377,12 @@ class Modal extends Component {
         mountNode={mountNode}
         open={open}
         onClose={this.handleClose}
+        onDocumentClick={this.handleDocumentClick}
         onMount={this.handlePortalMount}
         onOpen={this.handleOpen}
         onUnmount={this.handlePortalUnmount}
       >
-        <div className={dimmerClasses} onClick={this.handleDimmerClick} ref={this.handleDimmerRef}>
+        <div className={dimmerClasses} ref={this.handleDimmerRef}>
           {this.renderContent(rest)}
         </div>
       </Portal>
